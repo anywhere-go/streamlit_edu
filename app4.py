@@ -52,7 +52,24 @@ def main():
     else:
         st.text('PHP는 멋지지')
 
+    # 멀티셀렉트 : 여러개 중에서, 여러개 선택하는 UI
+    # st.multiselect('여러개 선택가능', language)
+    
+    column_list = st.multiselect('컬럼을 선택하세요', df.columns)
 
+    # 멀티셀렉트를 이용해서, 특정 컬럼들만 가져오기.
+    # 유저에게, iris df의 컬럼들을 다 보여주고,
+    # 유저가 선택한 컬럼들만, 데이터프레임을 화면에 보여줄것!
+    st.dataframe(df[column_list])
+
+    # 슬라이더 :  숫자 조정하는데 주로 사용 
+    #st.slider('나이', min_value=30, step =10, value= 50)
+    age = st.slider('나이', min_value=30, max_value=110, value= 50)
+    st.text('나이는' + str(age) + '입니다.')
+
+    # 익스펜더 
+    with st.expander('Hello') :
+        st.text('안녕하세요')
 
 
 
